@@ -5,6 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vertical Scroll with Horizontal Timeline</title>
     <style>
+        @font-face {
+            font-family: 'CentraNo2';
+            src: url('fonts/CentraNo2-Light.woff2') format('woff2'),
+                 url('fonts/CentraNo2-Light.woff') format('woff');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'CentraNo2';
+            src: url('fonts/CentraNo2-Medium.woff2') format('woff2'),
+                 url('fonts/CentraNo2-Medium.woff') format('woff');
+            font-weight: 500;
+            font-style: normal;
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -12,7 +28,8 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'CentraNo2', Arial, sans-serif;
+            font-weight: 300;
             overflow-x: hidden;
             background-color: #f5f5f5;
         }
@@ -24,63 +41,65 @@
         }
 
         .horizontal-section {
-            height: 400px;
+            height: 600px; /* Increased height */
             overflow-x: scroll;
             overflow-y: hidden;
-            white-space: nowrap;
             position: relative;
         }
 
         .cards-container {
-            display: inline-block;
+            display: inline-flex;
             height: 100%;
-            padding: 50px 0;
+            padding: 200px 0; /* Increased vertical padding */
+            position: relative;
+            margin-left: 100px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #d0d0d0;
+            z-index: 0;
         }
 
         .timeline-card {
-            display: inline-block;
+            flex: 0 0 auto;
             height: 300px;
-            width: 300px;
+            width: 500px;
             background-color: #ffffff;
             margin-right: 75px;
-            vertical-align: middle;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
             padding: 20px;
-            white-space: normal;
-        }
-
-        .timeline-card:first-child {
-            margin-left: 150px;
+            position: relative;
+            z-index: 1;
         }
 
         .timeline-card:last-child {
-            margin-right: 150px;
+            margin-right: 100px;
         }
 
-        .timeline-dot {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #007bff;
-            margin: 0 auto 10px;
-        }
+       
 
         .timeline-date {
-            font-weight: bold;
+            font-weight: 500;
             margin-bottom: 5px;
-            color: #007bff;
+            color: #4248ED;
         }
 
         .timeline-title {
-            font-weight: bold;
+            font-weight: 500;
             margin-bottom: 10px;
         }
 
         .timeline-description {
             font-size: 14px;
             color: #666;
+            font-weight: 300;
         }
     </style>
 </head>
@@ -91,6 +110,7 @@
         </section>
         <section class="horizontal-section">
             <div class="cards-container">
+                <div class="timeline-line"></div>
                 <div class="timeline-card">
                     <div class="timeline-dot"></div>
                     <div class="timeline-date">1776</div>
